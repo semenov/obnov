@@ -35,7 +35,10 @@ GEM
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    haml (3.0.21)
     i18n (0.4.1)
+    jquery-rails (0.2.4)
+      rails (~> 3.0)
     mail (2.2.7)
       activesupport (>= 2.3.6)
       mime-types
@@ -79,5 +82,7 @@ PLATFORMS
 
 DEPENDENCIES
   bson_ext (= 1.1.1)
+  haml (= 3.0.21)
+  jquery-rails
   mongoid (= 2.0.0.beta.19)
   rails (= 3.0.1)

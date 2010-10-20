@@ -1,0 +1,11 @@
+%p#notice= notice
+%h1
+  = @stream.name
+= link_to 'Редактировать', edit_stream_path(@stream)
+|
+= link_to 'Все потоки', streams_path
+
+#updates
+  - @stream.updates.each do |update|
+    .update
+      = update.status
