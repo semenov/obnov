@@ -1,9 +1,14 @@
 Obnov::Application.routes.draw do
+  devise_for :users
+
   resources :streams do
     resources :posts do
       resources :comments
     end
   end
+  
+  root :to => "streams#index"
+  
 # The priority is based upon order of creation:
   # first created -> highest priority.
 
