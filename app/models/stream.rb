@@ -1,5 +1,5 @@
 class Stream
   include Mongoid::Document
   field :name
-  references_many :updates
+  references_many :posts
 end

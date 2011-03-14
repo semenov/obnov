@@ -5,7 +5,17 @@
 |
 = link_to 'Все потоки', streams_path
 
+= form_for([@stream, @post]) do |f|
+  .field
+    = f.text_field :status
+  .actions
+    = f.submit
+
+
 #updates
-  - @stream.updates.each do |update|
-    .update
-      = update.status
+  - @stream.posts.activity.each do |post|
+    .post
+      = link_to '#', [@stream, post]
+      = post.status
+      %small
+        = time_ago_in_words(post.created_at)

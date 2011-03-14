@@ -1,5 +1,5 @@
 class Comment
   include Mongoid::Document
   field :text
-  embedded_in :update, :inverse_of => :comments
+  embedded_in :post, :inverse_of => :comments
 end
