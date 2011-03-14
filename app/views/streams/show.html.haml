@@ -7,7 +7,7 @@
 
 = form_for([@stream, @post]) do |f|
   .field
-    = f.text_field :status
+    = f.text_field :content
   .actions
     = f.submit 'Опубликовать'
 
@@ -19,6 +19,6 @@
       [
       = link_to post.comments.count, [@stream, post]
       ]
-      = post.status
+      = post.content
       %small
         = time_ago_in_words(post.created_at)

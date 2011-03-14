@@ -3,18 +3,18 @@
   = link_to @stream.name, @stream
 
 
-= @post.status
+= @post.content
 
 
 #comments
   - @post.comments.each do |comment|
     .comment
-      = comment.text
+      = comment.content
       %small
         = time_ago_in_words(comment.created_at)
         
 = form_for([@stream, @post, @comment]) do |f|
   .field
-    = f.text_field :text
+    = f.text_field :content
   .actions
     = f.submit 'Комментировать'
