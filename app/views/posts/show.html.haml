@@ -1,0 +1,20 @@
+%p#notice= notice
+%h1
+  = link_to @stream.name, @stream
+
+
+= @post.status
+
+
+#comments
+  - @post.comments.each do |comment|
+    .comment
+      = comment.text
+      %small
+        = time_ago_in_words(comment.created_at)
+        
+= form_for([@stream, @post, @comment]) do |f|
+  .field
+    = f.text_field :text
+  .actions
+    = f.submit 'Комментировать'

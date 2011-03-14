@@ -9,13 +9,16 @@
   .field
     = f.text_field :status
   .actions
-    = f.submit
+    = f.submit 'Опубликовать'
 
 
 #updates
   - @stream.posts.activity.each do |post|
     .post
       = link_to '#', [@stream, post]
+      [
+      = link_to post.comments.count, [@stream, post]
+      ]
       = post.status
       %small
         = time_ago_in_words(post.created_at)
