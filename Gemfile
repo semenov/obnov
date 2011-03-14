@@ -5,6 +5,8 @@ gem 'mongoid', '2.0.0.beta.19'
 gem 'bson_ext', '1.1.1'
 gem 'haml', '3.0.21'
 gem 'jquery-rails'
+gem 'slim', :require => 'slim/rails'
+gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

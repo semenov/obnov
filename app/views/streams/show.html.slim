@@ -1,8 +1,8 @@
-%p#notice= notice
-%h1
+p#notice= notice
+h1
   = @stream.name
 = link_to 'Редактировать', edit_stream_path(@stream)
-|
+= ' | ' 
 = link_to 'Все потоки', streams_path
 
 = form_for([@stream, @post]) do |f|
@@ -16,9 +16,9 @@
   - @stream.posts.activity.each do |post|
     .post
       = link_to '#', [@stream, post]
-      [
+      | [
       = link_to post.comments.count, [@stream, post]
-      ]
+      | ]
       = post.content
-      %small
+      small
         = time_ago_in_words(post.created_at)

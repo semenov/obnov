@@ -1,9 +1,9 @@
-%h1 Потоки
+h1 Потоки
 
-%ul#streams
+ul#streams
 - @streams.each do |stream|
-  %li.stream
+  li.stream
     = link_to stream.name, stream
-%br
+br
 
 = link_to 'Новый поток', new_stream_path
