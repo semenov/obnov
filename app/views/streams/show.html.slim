@@ -19,6 +19,10 @@ h1
       | [
       = link_to post.comments.count, [@stream, post]
       | ]
-      = post.content
+      .author
+        = gravatar_for post.user
+        = post.user.email
+      .content
+        = post.content
       small
         = time_ago_in_words(post.created_at)

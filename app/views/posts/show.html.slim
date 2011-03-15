@@ -9,7 +9,11 @@ h1
 #comments
   - @post.comments.each do |comment|
     .comment
-      = comment.content
+      .author
+        = gravatar_for comment.user
+        = comment.user.email
+      .content
+        = comment.content
       small
         = time_ago_in_words(comment.created_at)
         

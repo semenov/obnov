@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
   end
   
@@ -11,6 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.stream = Stream.find(params[:stream_id])
+    @post.user = current_user
     @post.save
     redirect_to(@post.stream)
   end

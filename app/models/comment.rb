@@ -4,4 +4,5 @@ class Comment
     
   field :content
   embedded_in :post, :inverse_of => :comments
+  referenced_in :user
 end

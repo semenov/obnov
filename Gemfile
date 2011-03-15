@@ -6,7 +6,9 @@ gem 'bson_ext', '1.1.1'
 gem 'haml', '3.0.21'
 gem 'jquery-rails'
 gem 'slim', :require => 'slim/rails'
-gem 'devise'
+gem 'devise', '1.2.rc2'
+gem 'hpricot'
+gem 'haml2slim'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
