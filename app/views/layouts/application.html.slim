@@ -3,7 +3,10 @@ html
     title 
       | Obnov
     = stylesheet_link_tag(:all)
+    script type="text/javascript"
+      = raw("var Pipe = #{@pipe.to_json};")  
     = javascript_include_tag(:defaults)
+    = javascript_include_tag("http://obnov.com:8080/application.js")
     = csrf_meta_tag
   body
     #panel

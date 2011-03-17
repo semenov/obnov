@@ -4,6 +4,8 @@ h1
 = link_to 'Редактировать', edit_stream_path(@stream)
 = ' | ' 
 = link_to 'Все потоки', streams_path
+= ' | ' 
+= link_to 'Обновить', @stream, :class => 'refresh'
 
 = form_for([@stream, @post]) do |f|
   .field
@@ -12,17 +14,5 @@ h1
     = f.submit 'Опубликовать'
 
 
-#updates
-  - @stream.posts.activity.each do |post|
-    .post
-      = link_to '#', [@stream, post]
-      | [
-      = link_to post.comments.count, [@stream, post]
-      | ]
-      .author
-        = gravatar_for post.user
-        = post.user.email
-      .content
-        = post.content
-      small
-        = time_ago_in_words(post.created_at)
+#posts
+  = render @stream.posts.activity

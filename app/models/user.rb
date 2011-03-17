@@ -3,7 +3,7 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  field :content
+  field :name
   references_many :posts
   references_many :comments
 end

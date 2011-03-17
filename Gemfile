@@ -4,11 +4,13 @@ gem 'rails', '3.0.1'
 gem 'mongoid', '2.0.0.beta.19'
 gem 'bson_ext', '1.1.1'
 gem 'haml', '3.0.21'
-gem 'jquery-rails'
-gem 'slim', :require => 'slim/rails'
+gem 'jquery-rails', '0.2.4'
+gem 'slim', '0.9.1', :require => 'slim/rails'
 gem 'devise', '1.2.rc2'
-gem 'hpricot'
-gem 'haml2slim'
+gem 'juggernaut', '2.0.1'
+gem 'json', '1.5.1'
+#gem 'SystemTimer', '1.2.2'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

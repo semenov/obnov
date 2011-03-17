@@ -15,7 +15,13 @@ class PostsController < ApplicationController
     @post.stream = Stream.find(params[:stream_id])
     @post.user = current_user
     @post.save
-    redirect_to(@post.stream)
+    
+    post_html = render_to_string @post
+    
+    Juggernaut.publish("streams/#{@post.stream.id}", { :html => post_html })
+    if !request.xhr?
+      redirect_to(@post.stream)
+    end
   end
 
   def update

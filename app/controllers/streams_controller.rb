@@ -8,6 +8,9 @@ class StreamsController < ApplicationController
   def show
     @stream = Stream.find(params[:id])
     @post = Post.new
+    @pipe = {
+      :stream_id => @stream.id.to_s
+    }
   end
 
   def new

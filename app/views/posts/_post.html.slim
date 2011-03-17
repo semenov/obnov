@@ -1,0 +1,12 @@
+.post
+  = link_to '#', [post.stream, post]
+  | [
+  = link_to post.comments.count, [post.stream, post]
+  | ]
+  .author
+    = gravatar_for post.user
+    = post.user.name
+  .content
+    = post.content
+  small
+    = time_ago_in_words(post.created_at)
