@@ -1,15 +1,10 @@
 p#notice= notice
 h1
   = @stream.name
-= link_to 'Редактировать', edit_stream_path(@stream)
-= ' | ' 
-= link_to 'Все потоки', streams_path
-= ' | ' 
-= link_to 'Обновить', @stream, :class => 'refresh'
 
 = form_for([@stream, @post]) do |f|
   .field
-    = f.text_field :content
+    = f.text_area :content
   .actions
     = f.submit 'Опубликовать'
 

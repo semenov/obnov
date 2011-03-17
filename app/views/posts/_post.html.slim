@@ -1,12 +1,13 @@
-.post
-  = link_to '#', [post.stream, post]
-  | [
-  = link_to post.comments.count, [post.stream, post]
-  | ]
-  .author
+.post data-id="#{post.id}"
+  .avatar
     = gravatar_for post.user
-    = post.user.name
-  .content
-    = post.content
-  small
-    = time_ago_in_words(post.created_at)
+  .info
+    .author
+      = post.user.name
+    .content
+      = auto_link post.content
+    small
+      = time_ago_in_words(post.created_at)
+  .comments
+    = post.comments.count
+  .clear

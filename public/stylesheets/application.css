@@ -1,0 +1,55 @@
+#wrapper {
+  width: 600px;
+  margin: 0 auto;
+}
+
+input[type=text] {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  height: 50px;
+}
+
+.author {
+  font-weight: bold;
+}
+
+.avatar {
+  float: left;
+  padding: 2px;
+  margin-right: 15px;
+  -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.post {
+  position: relative;
+  padding: 10px;
+  margin-bottom: 10px 
+}
+
+.post .content {
+  font-size: larger;
+}
+
+.post .info {
+  float: left;
+  width: 500px;
+}
+
+.post .comments {
+  width: 20px;
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.post:hover {
+  cursor: hand;
+  background: #F7F7F7;
+}

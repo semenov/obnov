@@ -19,8 +19,9 @@ Post.refresh = function() {
 var Comment = {};
 */
 $(function () {
-  $('.refresh').click(function() {
-    alert('lol');
+  $('#posts .post').live('click', function() {
+    var url = '/streams/' + Pipe.stream_id + '/posts/' + $(this).data('id')
+    window.location.replace(url);
   });
   
   $('#new_post').submit(function() {
@@ -42,6 +43,8 @@ $(function () {
     
     return false;
   });
+  
+  
   
   var jug = new Juggernaut({ host: 'obnov.com' });
   jug.subscribe("streams/" + Pipe.stream_id, function(data) {

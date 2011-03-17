@@ -9,7 +9,10 @@ html
     = javascript_include_tag("http://obnov.com:8080/application.js")
     = csrf_meta_tag
   body
-    #panel
-      - if user_signed_in?
-        = link_to 'Выход', destroy_user_session_path
-    = yield
+    #wrapper
+      #panel
+        - if user_signed_in?
+          = link_to 'Потоки', streams_path
+          = ' | ' 
+          = link_to 'Выход', destroy_user_session_path
+      = yield
