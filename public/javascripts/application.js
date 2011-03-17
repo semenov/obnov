@@ -30,10 +30,26 @@ $(function () {
     return false;
   });
   
+  $('#new_comment').submit(function() {
+    
+    var content = $('#comment_content').val();
+
+    $.post(
+      "/streams/" + Pipe.stream_id + "/posts/" + Pipe.post_id + "/comments", 
+      { 'comment[content]': content }
+    );
+    $('#comment_content').val('');
+    
+    return false;
+  });
+  
   var jug = new Juggernaut({ host: 'obnov.com' });
   jug.subscribe("streams/" + Pipe.stream_id, function(data) {
     $(data['html']).prependTo('#posts')
   });
   
+  jug.subscribe("posts/" + Pipe.post_id, function(data) {
+    $(data['html']).appendTo('#comments')
+  });
 
 })

@@ -8,6 +8,10 @@ class PostsController < ApplicationController
     @stream = Stream.find(params[:stream_id])
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @pipe = {
+      :stream_id => @stream.id.to_s,
+      :post_id => @post.id.to_s
+    }
   end
 
   def create
