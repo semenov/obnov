@@ -9,5 +9,8 @@
     small
       = time_ago_in_words(post.created_at)
   .comments
-    = post.comments.count
+    .label
+      | ответы
+    .count
+      = post.comments.count
   .clear
