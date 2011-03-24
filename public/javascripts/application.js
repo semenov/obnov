@@ -44,7 +44,7 @@ $(function () {
     return false;
   });
   
-  
+  $('textarea').autoResize();
   
   var jug = new Juggernaut({ host: 'obnov.com' });
   jug.subscribe("streams/" + Pipe.stream_id, function(data) {
