@@ -19,9 +19,15 @@ Post.refresh = function() {
 var Comment = {};
 */
 $(function () {
+  $('#notice').delay('3000').hide('slow');
+  
   $('#posts .post').live('click', function() {
     var url = '/streams/' + Pipe.stream_id + '/posts/' + $(this).data('id')
-    window.location.replace(url);
+    window.location = url;
+  });
+  
+  $('textarea').bind('keydown', 'ctrl+return', function() {
+    $(this).closest('form').submit();
   });
   
   $('#new_post').submit(function() {

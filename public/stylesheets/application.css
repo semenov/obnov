@@ -3,8 +3,52 @@
   margin: 0 auto;
 }
 
+#header {
+  border-bottom: 1px dotted #AAA;
+  padding: 30px 0;
+}
+
+#logo {
+  font-family: 'Cuprum', arial, serif;
+  font-size: 40px;
+  margin-left: -5px;
+  float: left;
+}
+
+#big_logo {
+  text-align: center;
+  margin: 40px 0 70px;
+}
+
+#big_logo .label {
+  font-family: 'Cuprum', arial, serif;
+  font-size: 50px;
+  margin-top: 30px;
+}
+
+#root .description {
+  font-size: larger;
+  margin: 25px 0;
+}
+
+#root .links {
+  text-align: center;
+  font-family: 'Cuprum', arial, serif;
+  font-size: 25px;
+  margin-top: 70px;
+}
+
+#logo img {
+  vertical-align: -12px;
+}
+
+#panel {
+  margin: 20px 0 0;
+  float: right;
+}
+
 input[type=text] {
-  width: 100%;
+  /*width: 100%;*/
 }
 
 textarea {
@@ -15,7 +59,7 @@ textarea {
 h1 { 
   font-family: 'Cuprum', arial, serif;
   font-weight: normal;
-  font-size: 30px
+  font-size: 30px;
 }
 
 .author {
@@ -95,8 +139,8 @@ h1 {
 
 .separator {
   height: 1px;
-  background-color: #CCC;
   margin-top: 10px;
+  border-bottom: 1px dotted #AAA;
 }
 
 #posts .post:hover {

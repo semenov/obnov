@@ -1,0 +1,19 @@
+- content_for :content do
+
+  #root
+    #big_logo
+      img src="/images/logo_256.png"
+      .label Обновлятор
+     
+    .separator
+    .description
+      strong Обновлятор 
+      | 
+        &mdash; сервис, позволяющий отаваться в курсе последних событий и новостей в рабочем проекте.
+        Вся информация собирается в &laquo;потоки&raquo;, доступные исключительно участникам группы.
+      
+    .separator
+    
+    .links
+      = raw "Пожалуйста, #{link_to 'войдите', new_user_session_path} "
+      = raw "либо #{link_to 'зарегистрируйтесь', new_user_registration_path}."
