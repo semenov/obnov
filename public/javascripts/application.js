@@ -1,5 +1,5 @@
 $(function () {
-  $('textarea').autoResize({extraSpace : 20})
+  //$('textarea').autoResize({extraSpace : 20})
   $('#notice').delay('3000').hide('slow');
   //$('time').clockwinder();
   

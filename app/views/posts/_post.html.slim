@@ -6,6 +6,7 @@
       span.author
         = post.user.name
       time datetime="#{post.created_at}"
+      = link_to '#', [post.stream, post]
     .content
       = auto_link post.content
     .comments
@@ -16,6 +17,6 @@
         .field
           = f.text_area :content, :class => 'reply'
         .actions
-          = f.submit 'Комментировать'
+          = f.submit 'Ответить'
   .clear
 

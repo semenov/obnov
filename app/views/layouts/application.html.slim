@@ -1,8 +1,9 @@
 - content_for :content do
   #header
     #logo
-      img src="/images/logo_48.png"
-      | Обновлятор
+      a href="/"
+        img src="/images/logo_48.png"
+        | Обновлятор
     #panel
       - if user_signed_in?
         = link_to 'Потоки', streams_path

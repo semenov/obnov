@@ -15,6 +15,18 @@
   float: left;
 }
 
+#logo a {
+  color: #000;
+  text-decoration: none;
+
+}
+
+#logo a:hover {
+  color: #000;
+  text-decoration: none;
+  background-color: #FFF;
+}
+
 #big_logo {
   text-align: center;
   margin: 40px 0 70px;
@@ -135,4 +147,24 @@ input.reply {
 
 .new_comment {
   display: none;
+}
+
+ul#streams {
+  list-style-type: none;
+  padding: 0; 
+}
+
+ul#streams li {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+ul#streams li a {
+  text-decoration: none;
+}
+
+h1 a {
+  color: #000;
+  text-decoration: none;
+  padding: 3px 0;
 }

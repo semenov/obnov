@@ -1,9 +1,9 @@
 h1 Потоки
 
 ul#streams
-- @streams.each do |stream|
-  li.stream
-    = link_to stream.name, stream
+  - @streams.each do |stream|
+    li.stream
+      = link_to stream.name, stream
 br
 
 = link_to 'Создать поток', new_stream_path
