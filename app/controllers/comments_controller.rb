@@ -9,7 +9,13 @@ class CommentsController < ApplicationController
     
     comment_html = render_to_string @comment
     
-    Juggernaut.publish("posts/#{@comment.post.id}", { :html => comment_html })
-    redirect_to([@comment.post.stream, @comment.post]) if !request.xhr?
+    Juggernaut.publish("streams/#{@comment.post.stream.id}", { 
+      :event => 'comments/create', :post_id => @comment.post.id, :html => comment_html })
+    
+    if request.xhr?
+      render :json => @comment
+    else
+      redirect_to([@comment.post.stream, @comment.post])
+    end
   end
 end

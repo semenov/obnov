@@ -1,33 +1,21 @@
-/*var Global = {};
-
-Global.lastUpdate = new Date();
-
-var Post = {};
-
-Post.refresh = function() {
-  $.ajax({
-    url: "test.html",
-    cache: false,
-    success: function(html) {
-      $("#results").append(html);
-    }
-  });
-}
-
-
-
-var Comment = {};
-*/
 $(function () {
+  $('textarea').autoResize({extraSpace : 20})
   $('#notice').delay('3000').hide('slow');
+  //$('time').clockwinder();
   
-  $('#posts .post').live('click', function() {
-    var url = '/streams/' + Pipe.stream_id + '/posts/' + $(this).data('id')
-    window.location = url;
+  $('textarea').live('keydown', 'ctrl+return', function() {
+    $(this).closest('form').submit();
   });
   
-  $('textarea').bind('keydown', 'ctrl+return', function() {
-    $(this).closest('form').submit();
+  $('input.reply').live('focus', function() {
+    $(this).next('.new_comment').show().find('textarea.reply').focus();
+    $(this).hide();
+  });
+  
+  $('textarea.reply').live('blur', function() {
+    if ($(this).val() == '') {
+      $(this).closest('form').hide().prev('input.reply').show();
+    }
   });
   
   $('#new_post').submit(function() {
@@ -37,28 +25,31 @@ $(function () {
     return false;
   });
   
-  $('#new_comment').submit(function() {
+  $('.new_comment').live('submit', function() {
+    var content = $(this).find('textarea').val();
     
-    var content = $('#comment_content').val();
-
     $.post(
-      "/streams/" + Pipe.stream_id + "/posts/" + Pipe.post_id + "/comments", 
-      { 'comment[content]': content }
+      $(this).attr('action'), 
+      {'comment[content]': content}
     );
-    $('#comment_content').val('');
+    $(this).find('textarea').val('');
+    $(this).find('textarea').blur();
     
     return false;
   });
   
-  $('textarea').autoResize();
+  
   
   var jug = new Juggernaut({ host: 'obnov.com' });
   jug.subscribe("streams/" + Pipe.stream_id, function(data) {
-    $(data['html']).prependTo('#posts')
+    var event = data['event'];
+    if (event == 'posts/create') {
+      $(data['html']).prependTo('#posts');
+    } else if (event == 'comments/create') {
+      $(data['html']).appendTo('.post[data-id="'+ data['post_id'] + '"] .comments');
+    }
+    
   });
-  
-  jug.subscribe("posts/" + Pipe.post_id, function(data) {
-    $(data['html']).appendTo('#comments')
-  });
+
 
 })

@@ -22,8 +22,10 @@ class PostsController < ApplicationController
     
     post_html = render_to_string @post
     
-    Juggernaut.publish("streams/#{@post.stream.id}", { :html => post_html })
-    if !request.xhr?
+    Juggernaut.publish("streams/#{@post.stream.id}", { :event => 'posts/create', :html => post_html })
+    if request.xhr?
+      render :json => @post
+    else
       redirect_to(@post.stream)
     end
   end

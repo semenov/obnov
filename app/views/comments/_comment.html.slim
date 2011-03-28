@@ -1,11 +1,11 @@
 .comment
   .avatar
-    = gravatar_for comment.user
+    = gravatar_for comment.user, :size => 25
   .info
-    .author
-      = comment.user.name
+    div
+      span.author
+        = comment.user.name
+      time datetime="#{comment.created_at}"
     .content
       = auto_link comment.content
-    small
-      = time_ago_in_words(comment.created_at)
 .clear

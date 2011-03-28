@@ -4,25 +4,4 @@ h1
 
 
 #post
-  .post
-    .avatar
-      = gravatar_for @post.user
-    .info
-      .author
-        = @post.user.name
-      .content
-        = auto_link @post.content
-      small
-        = time_ago_in_words(@post.created_at)
-  .clear
-  .separator
-
-  #comments
-    = render @post.comments
-
-          
-  = form_for([@stream, @post, @comment]) do |f|
-    .field
-      = f.text_area :content
-    .actions
-      = f.submit 'Комментировать'
+  = render @post

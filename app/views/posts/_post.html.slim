@@ -2,15 +2,20 @@
   .avatar
     = gravatar_for post.user
   .info
-    .author
-      = post.user.name
+    div
+      span.author
+        = post.user.name
+      time datetime="#{post.created_at}"
     .content
       = auto_link post.content
-    small
-      = time_ago_in_words(post.created_at)
-  .comments
-    .label
-      | ответы
-    .count
-      = post.comments.count
+    .comments
+      = render post.comments
+    .new_comment_block
+      input.reply type="text" value="Ответить..."
+      = form_for([post.stream, post, Comment.new]) do |f|
+        .field
+          = f.text_area :content, :class => 'reply'
+        .actions
+          = f.submit 'Комментировать'
   .clear
+
