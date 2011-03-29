@@ -3,8 +3,12 @@ $(function () {
   $('#notice').delay('3000').hide('slow');
   //$('time').clockwinder();
   
-  $('textarea').live('keydown', 'ctrl+return', function() {
-    $(this).closest('form').submit();
+  $('textarea').live('keydown', function(e) {
+    var code = (e.keyCode ? e.keyCode : e.which);
+    var returnKeyCode = 13;
+    if (code == returnKeyCode && e.ctrlKey) {
+      $(this).closest('form').submit();
+    }
   });
   
   $('input.reply').live('focus', function() {
