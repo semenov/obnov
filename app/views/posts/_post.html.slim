@@ -8,7 +8,7 @@
       time datetime="#{post.created_at}"
       = link_to '#', [post.stream, post]
     .content
-      = auto_link post.content
+      = auto_link h post.content
     .comments
       = render post.comments
     .new_comment_block
