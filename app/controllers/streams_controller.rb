@@ -1,8 +1,9 @@
 class StreamsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource :except => [:show]
   
   def index
-    @streams = Stream.all
+    @streams = current_user.streams
   end
 
   def show
@@ -23,6 +24,7 @@ class StreamsController < ApplicationController
 
   def create
     @stream = Stream.new(params[:stream])
+    @stream.user = current_user
 
     if @stream.save
       redirect_to(@stream, :notice => 'Stream was successfully created.')

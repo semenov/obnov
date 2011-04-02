@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.0.5'
 gem 'mongoid', '2.0.0.beta.19'
 gem 'bson_ext', '1.1.1'
 gem 'haml', '3.0.21'
@@ -9,7 +9,8 @@ gem 'slim', '0.9.1', :require => 'slim/rails'
 gem 'devise', '1.2.rc2'
 gem 'juggernaut', '2.0.1'
 gem 'json', '1.5.1'
-#gem 'SystemTimer', '1.2.2'
+gem 'SystemTimer', '1.2.3'
+gem 'cancan', '1.6.4'
 
 
 # Bundle edge Rails instead:
@@ -23,7 +24,7 @@ gem 'json', '1.5.1'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug'
+gem 'ruby-debug'
 
 # Bundle the extra gems:
 # gem 'bj'

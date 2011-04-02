@@ -2,12 +2,18 @@ p#notice= notice
 h1
   = @stream.name
 
-= form_for([@stream, @post]) do |f|
-  .field
-    = f.text_area :content
-  .actions
-    = f.submit 'Опубликовать'
+
+- if can? :read, @stream
+  = form_for([@stream, @post]) do |f|
+    .field
+      = f.text_area :content
+    .actions
+      = f.submit 'Опубликовать'
 
 
-#posts
-  = render @stream.posts.activity
+  #posts
+    = render @stream.posts.activity
+    
+- else
+  div
+    | Вы не можете просматривать поток, т. к. не являетесь его участником.

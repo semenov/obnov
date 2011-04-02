@@ -1,7 +1,7 @@
 $(function () {
   //$('textarea').autoResize({extraSpace : 20})
   $('#notice').delay('3000').hide('slow');
-  //$('time').clockwinder();
+  $.clockwinder.live('time');
   
   $('textarea').live('keydown', function(e) {
     var code = (e.keyCode ? e.keyCode : e.which);

@@ -19,6 +19,21 @@
   }
 
   $.clockwinder = {
+    live: function(selector, opts) {
+    var options = $.extend({
+      postfix: 'назад',
+      interval: 30000,
+      alwaysRelative: false,
+      attr: 'datetime'
+    }, opts);
+
+    setInterval(function() {
+      $.clockwinder.update($(selector), options);
+    }, options.interval);
+  
+    $.clockwinder.update($(selector), options);
+  }
+    
     update: function(elements, options) {
       elements.each(function() {
         var newTime = $.clockwinder.compute($(this).attr(options.attr), options);
