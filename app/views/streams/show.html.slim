@@ -1,19 +1,24 @@
 p#notice= notice
-h1
-  = @stream.name
+#stream
+  h1
+    = @stream.name
+
+  - if can? :manage, @stream
+    .edit
+      = link_to 'Редактировать', edit_stream_path(@stream)
+  .clear
+
+  - if can? :read, @stream
+    = form_for([@stream, @post]) do |f|
+      .field
+        = f.text_area :content
+      .actions
+        = f.submit 'Опубликовать'
 
 
-- if can? :read, @stream
-  = form_for([@stream, @post]) do |f|
-    .field
-      = f.text_area :content
-    .actions
-      = f.submit 'Опубликовать'
-
-
-  #posts
-    = render @stream.posts.activity
-    
-- else
-  div
-    | Вы не можете просматривать поток, т. к. не являетесь его участником.
+    #posts
+      = render @stream.posts.activity
+      
+  - else
+    div
+      | Вы не можете просматривать поток, т. к. не являетесь его участником.

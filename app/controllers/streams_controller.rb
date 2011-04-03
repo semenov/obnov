@@ -1,13 +1,13 @@
 class StreamsController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource :except => [:show]
   
   def index
     @streams = current_user.streams
   end
 
   def show
-    @stream = Stream.find(params[:id])
+    @stream = Stream.find_by_slug(params[:id])
+    authorize! :read, @stream
     @post = Post.new
     @pipe = {
       :stream_id => @stream.id.to_s
@@ -19,7 +19,8 @@ class StreamsController < ApplicationController
   end
 
   def edit
-    @stream = Stream.find(params[:id])
+    @stream = Stream.find_by_slug(params[:id])
+    authorize! :edit, @stream
   end
 
   def create
@@ -34,7 +35,8 @@ class StreamsController < ApplicationController
   end
 
   def update
-    @stream = Stream.find(params[:id])
+    @stream = Stream.find_by_slug(params[:id])
+    authorize! :update, @stream
 
     if @stream.update_attributes(params[:stream])
       redirect_to(@stream, :notice => 'Stream was successfully updated.')
@@ -44,7 +46,8 @@ class StreamsController < ApplicationController
   end
 
   def destroy
-    @stream = Stream.find(params[:id])
+    @stream = Stream.find_by_slug(params[:id])
+    authorize! :destroy, @stream
     @stream.destroy
     redirect_to(streams_url)
   end

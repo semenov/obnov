@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource
   
   def create
     @comment = Comment.new(params[:comment])
     @comment.post = Post.find(params[:post_id])
     @comment.user = current_user
+    authorize! :create, @comment
     @comment.save
     
     comment_html = render_to_string @comment

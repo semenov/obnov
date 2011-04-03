@@ -15,12 +15,16 @@ class Ability
     can :read, Stream, :member_ids => user.id
     
     can :manage, Post, :user_id => user.id
-    can :manage, Post, :stream => { :user_id => user.id }
+    can :manage, Post, :stream_id => user.owned_streams.map(&:id)
     can :read, Post, :stream_id.in => user.stream_ids
     
     can :manage, Comment, :user_id => user.id
-    can :manage, Comment, :post => { :stream => { :user_id => user.id } }
-    can :read, Comment, :post => { :stream_id.in => user.stream_ids }
+    can :manage, Comment do |comment|
+      user.owned_streams.map(&:id).include? comment.post.stream_id
+    end
+    can :read, Comment do |comment|
+      user.stream_ids.include? comment.post.stream_id
+    end
     
     #
     # The first argument to `can` is the action you are giving the user permission to do.

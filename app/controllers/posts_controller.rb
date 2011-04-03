@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
   
   def show
-    @stream = Stream.find(params[:stream_id])
+    @stream = Stream.find_by_slug(params[:stream_id])
     @post = Post.find(params[:id])
     @comment = Comment.new
     @pipe = {
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
-    @post.stream = Stream.find(params[:stream_id])
+    @post.stream = Stream.find_by_slug(params[:stream_id])
     @post.user = current_user
     @post.save
     

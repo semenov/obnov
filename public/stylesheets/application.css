@@ -168,3 +168,12 @@ h1 a {
   text-decoration: none;
   padding: 3px 0;
 }
+
+#stream h1 {
+  float: left;
+}
+
+#stream .edit {
+  float: right;
+  margin-top: 15px;
+}

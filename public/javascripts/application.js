@@ -1,7 +1,7 @@
 $(function () {
   //$('textarea').autoResize({extraSpace : 20})
   $('#notice').delay('3000').hide('slow');
-  $.clockwinder.live('time');
+  //$.clockwinder.live('time');
   
   $('textarea').live('keydown', function(e) {
     var code = (e.keyCode ? e.keyCode : e.which);
@@ -21,28 +21,19 @@ $(function () {
       $(this).closest('form').hide().prev('input.reply').show();
     }
   });
-  
-  $('#new_post').submit(function() {
-    var content = $('#post_content').val();
-    $.post("/streams/" + Pipe.stream_id + "/posts", { 'post[content]': content });
-    $('#post_content').val('');
-    return false;
-  });
-  
-  $('.new_comment').live('submit', function() {
-    var content = $(this).find('textarea').val();
-    
+
+  $('#new_post, .new_comment').live('submit', function() {
+    var form = $(this);
+
     $.post(
-      $(this).attr('action'), 
-      {'comment[content]': content}
+      form.attr('action'), 
+      form.serializeArray()
     );
-    $(this).find('textarea').val('');
-    $(this).find('textarea').blur();
-    
+
+    form.find('textarea').val('').blur();
     return false;
   });
-  
-  
+ 
   
   var jug = new Juggernaut({ host: 'obnov.com' });
   jug.subscribe("streams/" + Pipe.stream_id, function(data) {
