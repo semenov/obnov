@@ -11,6 +11,7 @@ gem 'juggernaut', '2.0.1'
 gem 'json', '1.5.1'
 gem 'SystemTimer', '1.2.3'
 gem 'cancan', '1.6.4'
+gem 'barista', '1.0.0'
 
 
 # Bundle edge Rails instead:
