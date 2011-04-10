@@ -4,8 +4,9 @@ class Stream
   
   field :name
   field :slug
-  referenced_in :user
-  references_many :members, :class_name => "User", :stored_as => :array, :inverse_of => :streams
+  referenced_in :user, :inverse_of => :owned_streams
+  references_and_referenced_in_many :members, :class_name => 'User', :inverse_of => :streams
+  references_and_referenced_in_many :applicants, :class_name => 'User', :inverse_of => :pending_streams
   references_many :posts
   after_create :add_owner_to_members
   
@@ -20,10 +21,26 @@ class Stream
     find(:first, :conditions => { :slug => slug })
   end
   
+  def is_applicant?(user)
+    self.applicants.include? user
+  end
+  
+  def accept_application(user)
+    self.applicants.delete user
+    self.members.push user
+    self.save
+  end
+  
+  def decline_application(user)
+    self.applicants.delete user
+    self.save
+  end
+  
   protected
   
   def add_owner_to_members
-    self.members << self.user
+    self.members.push self.user
+    self.save
   end
   
 end

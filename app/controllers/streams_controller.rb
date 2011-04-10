@@ -7,7 +7,6 @@ class StreamsController < ApplicationController
 
   def show
     @stream = Stream.find_by_slug(params[:id])
-    authorize! :read, @stream
     @post = Post.new
     @pipe = {
       :stream_id => @stream.id.to_s

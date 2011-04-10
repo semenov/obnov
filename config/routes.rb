@@ -5,6 +5,8 @@ Obnov::Application.routes.draw do
     resources :posts do
       resources :comments
     end
+    
+    resources :members
   end
   
   root :to => "pages#index"

@@ -10,9 +10,9 @@ class Ability
     #   else
     #     can :read, :all
     #   end
-    
+
     can :manage, Stream, :user_id => user.id
-    can :read, Stream, :member_ids => user.id
+    can :read, Stream, :members => { :id => user.id }
     
     can :manage, Post, :user_id => user.id
     can :manage, Post, :stream_id => user.owned_streams.map(&:id)

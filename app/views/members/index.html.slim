@@ -1,0 +1,11 @@
+p#notice= notice
+h1
+  = link_to @stream.name, @stream
+  = raw ' &mdash; Участники'
+
+#members
+  - @stream.applicants.each do |user|
+    = render :partial => 'member', :object => user, :locals => { :is_applicant => true }
+
+  - @stream.members.each do |user|
+    = render :partial => 'member', :object => user, :locals => { :is_applicant => false }

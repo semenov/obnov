@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
-gem 'mongoid', '2.0.0.beta.19'
-gem 'bson_ext', '1.1.1'
+gem 'mongoid', '2.0.0'
+gem 'bson_ext', '1.3.0'
 gem 'haml', '3.0.21'
 gem 'jquery-rails', '0.2.4'
 gem 'slim', '0.9.1', :require => 'slim/rails'

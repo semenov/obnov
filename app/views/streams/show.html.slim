@@ -1,11 +1,17 @@
-p#notice= notice
+- if notice
+  p#notice= notice
+  
 #stream
   h1
     = @stream.name
 
+  - if can? :read, @stream
+    .members
+      = link_to 'Участники', stream_members_path(@stream)
   - if can? :manage, @stream
     .edit
       = link_to 'Редактировать', edit_stream_path(@stream)
+
   .clear
 
   - if can? :read, @stream
@@ -20,5 +26,10 @@ p#notice= notice
       = render @stream.posts.activity
       
   - else
-    div
-      | Вы не можете просматривать поток, т. к. не являетесь его участником.
+    - if @stream.is_applicant? current_user
+      div
+        | Ваша заявка на присоединение к потоку находится на рассмотрении.
+    - else
+      div style="padding-bottom: 10px"
+        | Вы не можете просматривать поток, т. к. не являетесь его участником.
+      = button_to 'Присоединиться', stream_members_path(@stream)
