@@ -7,10 +7,13 @@
 
   - if can? :read, @stream
     .members
-      = link_to 'Участники', stream_members_path(@stream)
+      = link_to stream_members_path(@stream), :class => 'left button' do
+        | Участники
   - if can? :manage, @stream
     .edit
-      = link_to 'Редактировать', edit_stream_path(@stream)
+      = link_to edit_stream_path(@stream), :class => 'right button' do
+        span class="pen icon"
+        | Редактировать
 
   .clear
 
@@ -19,7 +22,8 @@
       .field
         = f.text_area :content
       .actions
-        = f.submit 'Опубликовать'
+        button type="submit" class="positive" 
+          | Опубликовать
 
 
     #posts
@@ -32,4 +36,8 @@
     - else
       div style="padding-bottom: 10px"
         | Вы не можете просматривать поток, т. к. не являетесь его участником.
-      = button_to 'Присоединиться', stream_members_path(@stream)
+      = form_tag stream_members_path(@stream), :method => :post do
+        button class='positive button' 
+          span class='rightarrow icon'
+          | Присоединиться
+      

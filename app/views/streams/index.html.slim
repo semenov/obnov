@@ -6,4 +6,6 @@ ul#streams
       = link_to stream.name, stream
 br
 
-= link_to 'Создать поток', new_stream_path
+= link_to new_stream_path, :class => 'primary button' do
+  span class="plus icon" 
+  | Создать поток

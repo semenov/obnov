@@ -14,8 +14,18 @@
     - if can? :manage, @stream and member != @stream.user
       div style="padding-top: 7px"
         - if is_applicant
-            = button_to 'Принять', stream_member_path(@stream, member), :method => :put
-            = button_to 'Отклонить', stream_member_path(@stream, member), :method => :delete
+          = form_tag stream_member_path(@stream, member), :method => :put do
+            button class='positive button' 
+              span class='check icon'
+              | Принять
+              
+          = form_tag stream_member_path(@stream, member), :method => :delete do
+            button class='negative button' 
+              span class='cross icon'
+              | Отклонить
         - else
-            = button_to 'Отключить', stream_member_path(@stream, member), :method => :delete
+          = form_tag stream_member_path(@stream, member), :method => :delete do
+            button class='negative button' 
+              span class='cross icon'
+              | Отключить
   .clear
