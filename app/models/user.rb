@@ -1,7 +1,14 @@
 class User
   include Mongoid::Document
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
+  
+  validates_presence_of :name
+  validates_presence_of :password, :on => :create
+  validates :email,   
+    :presence => true,   
+    :uniqueness => true,   
+    :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }  
   
   field :name
   references_many :owned_streams, :class_name => "Stream", :inverse_of => :user

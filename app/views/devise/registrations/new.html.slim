@@ -19,11 +19,6 @@ h1 Регистрация
     = f.password_field :password
 
   p
-    = f.label :password_confirmation, 'Подтверждение пароля'
-    br
-    = f.password_field :password_confirmation
-
-  p
     = f.submit "Зарегистрироваться"
 
 = render :partial => "devise/shared/links"

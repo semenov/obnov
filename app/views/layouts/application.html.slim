@@ -8,7 +8,7 @@
       - if user_signed_in?
         = gravatar_for current_user, :size => 16, :style => 'margin-right: 5px; vertical-align: middle'
         strong
-          = link_to current_user.name, edit_user_registration_path
+          = current_user.name
         = ' | ' 
         = link_to 'Выход', destroy_user_session_path
     .clear

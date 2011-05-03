@@ -1,0 +1,23 @@
+h2 Настройки
+
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+  = devise_error_messages!
+
+  p
+    = f.label :email, "Электронная почта"
+    br
+    = f.email_field :email
+
+  p
+    = f.label :password, "Новый пароль" 
+    em &nbsp; (оставтье пустым, если не хотите менять)
+    br
+    = f.password_field :password
+
+  p
+    = f.label :current_password, "Старый пароль"
+    br
+    = f.password_field :current_password
+
+  p
+    = f.submit "Сохранить"
