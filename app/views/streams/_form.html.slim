@@ -18,5 +18,6 @@
     = f.text_field :slug
     
   .actions
-    button type="submit" class="positive" 
+    button type="submit" style="margin-right: 10px"
       | Сохранить
+    = link_to 'Удалить', @stream, :method => :delete, :class => 'negative'

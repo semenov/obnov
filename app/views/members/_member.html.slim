@@ -12,20 +12,10 @@
     div 
       = member.email
     - if can? :manage, @stream and member != @stream.user
-      div style="padding-top: 7px"
+      div style="padding-top: 2px"
         - if is_applicant
-          = form_tag stream_member_path(@stream, member), :method => :put do
-            button class='positive button' 
-              span class='check icon'
-              | Принять
-              
-          = form_tag stream_member_path(@stream, member), :method => :delete do
-            button class='negative button' 
-              span class='cross icon'
-              | Отклонить
+          = link_to 'Принять', stream_member_path(@stream, member), :method => :put, :class => 'positive', :style => 'margin-right: 2px' 
+          = link_to 'Отклонить', stream_member_path(@stream, member), :method => :delete, :class => 'negative'
         - else
-          = form_tag stream_member_path(@stream, member), :method => :delete do
-            button class='negative button' 
-              span class='cross icon'
-              | Отключить
+          = link_to 'Отключить', stream_member_path(@stream, member), :method => :delete, :class => 'negative'
   .clear

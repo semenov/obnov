@@ -197,6 +197,26 @@ h1 a {
   padding-right: 7px;
 }
 
+a.positive {
+  color: #009100;
+  padding: 2px;
+}
+
+a.positive:hover {
+  color: #fff;
+  background-color: #009100;
+}
+
+a.negative {
+  color: #C40031;
+  padding: 2px;
+}
+
+a.negative:hover {
+  color: #fff;
+  background-color: #C40031;
+}
+
 form, input[type=submit] {
   margin: 0;
 }
