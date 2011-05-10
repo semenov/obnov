@@ -5,7 +5,13 @@
     div
       span.author
         = comment.user.name
-      time datetime="#{comment.created_at}"
+      ul.controls
+        li
+          time datetime="#{comment.created_at}"
+            = comment.created_at.strftime('%d.%m.%y %H:%M')
+        - if can? :destroy, comment
+          li
+            = link_to 'Удалить', [comment.post.stream, comment.post, comment], :method => :delete, :class => 'negative'
     .content
       = auto_link h comment.content
 .clear

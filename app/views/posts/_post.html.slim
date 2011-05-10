@@ -2,13 +2,21 @@
   .avatar
     = gravatar_for post.user
   .info
-    div
-      span.author
-        = post.user.name
-      time datetime="#{post.created_at}"
-      = link_to '#', [post.stream, post]
-    .content
-      = auto_link h post.content
+    .body
+      div
+        span.author
+          = post.user.name
+        ul.controls
+          li
+            time datetime="#{post.created_at}"
+              = post.created_at.strftime('%d.%m.%y %H:%M')
+          li
+            = link_to 'Пермалинк', [post.stream, post]
+          - if can? :destroy, post
+            li
+              = link_to 'Удалить', [post.stream, post], :method => :delete, :class => 'negative'
+      .content
+        = auto_link h post.content
     .comments
       = render post.comments
     .new_comment_block

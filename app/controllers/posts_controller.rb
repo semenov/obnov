@@ -35,6 +35,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @stream = Stream.find_by_slug(params[:stream_id])
+    @post = Post.find(params[:id])
+    authorize! :destroy, @post
+    @post.destroy
+    redirect_to(@stream)
   end
 
 end

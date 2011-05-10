@@ -19,4 +19,13 @@ class CommentsController < ApplicationController
       redirect_to([@comment.post.stream, @comment.post])
     end
   end
+  
+  def destroy
+    @stream = Stream.find_by_slug(params[:stream_id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    authorize! :destroy, @comment
+    @comment.destroy
+    redirect_to([@stream, @post])
+  end
 end

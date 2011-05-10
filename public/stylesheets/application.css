@@ -76,7 +76,6 @@ h1 {
 
 .author {
   font-weight: bold;
-  margin-right: 6px;
 }
 
 .avatar {
@@ -215,6 +214,46 @@ a.negative {
 a.negative:hover {
   color: #fff;
   background-color: #C40031;
+}
+
+time a, time a:visited {
+  color: #AAA;
+  padding: 1px;
+}
+
+time a:hover {
+  color: #fff;
+}
+
+.post .body .controls {
+  display: none;
+}
+
+.post .body:hover .controls {
+  display: inline;
+}
+
+.comment .info .controls {
+  display: none;
+}
+
+.comment .info:hover .controls {
+  display: inline;
+}
+
+ul.controls {
+  display: inline;
+  padding: 0;
+}
+
+ul.controls li {
+  display: inline;
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+a img {
+  border: 0;
 }
 
 form, input[type=submit] {

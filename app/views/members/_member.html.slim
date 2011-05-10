@@ -5,6 +5,7 @@
     div
       span.author
         = member.name
+      span style="margin-left: 10px"
       - if is_applicant
         em кандидат
       - elsif member == @stream.user
