@@ -20,4 +20,5 @@
   .actions
     button type="submit" style="margin-right: 10px"
       | Сохранить
-    = link_to 'Удалить', @stream, :method => :delete, :class => 'negative'
+    - unless @stream.new_record?
+      = link_to 'Удалить', @stream, :method => :delete, :class => 'negative'
