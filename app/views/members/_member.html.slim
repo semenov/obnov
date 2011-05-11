@@ -9,7 +9,7 @@
       - if is_applicant
         em кандидат
       - elsif member == @stream.user
-        em владелец потока
+        em владелец проекта
     div 
       = member.email
     - if can? :manage, @stream and member != @stream.user

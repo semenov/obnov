@@ -1,7 +1,7 @@
 Obnov::Application.routes.draw do
   devise_for :users
 
-  resources :streams do
+  resources :projects, :controller => 'streams', :as => 'streams' do
     resources :posts do
       resources :comments
     end

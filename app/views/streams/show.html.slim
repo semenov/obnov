@@ -35,10 +35,10 @@
   - else
     - if @stream.is_applicant? current_user
       div
-        | Ваша заявка на присоединение к потоку находится на рассмотрении.
+        | Ваша заявка на присоединение к проекту находится на рассмотрении.
     - else
       div style="padding-bottom: 10px"
-        | Вы не можете просматривать поток, т. к. не являетесь его участником.
+        | Вы не можете просматривать проект, т. к. не являетесь его участником.
       = form_tag stream_members_path(@stream), :method => :post do
         button class='positive button' 
           span class='rightarrow icon'
