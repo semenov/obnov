@@ -9,6 +9,9 @@
     .members
       = link_to stream_members_path(@stream), :class => 'left button' do
         | Участники
+      - if @stream.applicants.count > 0
+        small style="color: #f70; font-weight: bold"
+          = " +#{@stream.applicants.count}"
   - if can? :manage, @stream
     .edit
       = link_to edit_stream_path(@stream), :class => 'right button' do
